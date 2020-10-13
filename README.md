@@ -3,12 +3,7 @@
 wikidataqidlabels is a VS Code extension to show a description of the entity in Wikidata on hover. Currently, the plugin uses Wikidata API (https://www.wikidata.org/w/api.php).
 
 ## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-![hover](images/feature.gif)
+![demo](./images/feature.gif)
 
 
 ## Requirements
