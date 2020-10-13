@@ -1,0 +1,64 @@
+{
+	"name": "wikidataqidlabels",
+	"displayName": "wikidataqidlabels",
+	"description": "VS Code extension to show a description of the entity in Wikidata on hover",
+	"version": "1.0.0",
+	"publisher": "blokhinnv",
+	"engines": {
+		"vscode": "^1.50.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"translate",
+		"hover"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"title": "Enable",
+				"command": "wikidataqidlabels.enableHover"
+			},
+			{
+				"title": "Disable",
+				"command": "wikidataqidlabels.disableHover"
+			}
+		],
+		"configuration": {
+			"properties": {
+				"wikidataqidlabels.enableExtension": {
+					"type": "boolean",
+					"default": true
+				},
+				"wikidataqidlabels.wikidataLanguages": {
+					"type": "string",
+					"default": "ru|en"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.50.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.0",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.9.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.1.3",
+		"typescript": "^4.0.2",
+		"vscode-test": "^1.4.0"
+	},
+	"dependencies": {
+		"node-fetch": "^2.6.1"
+	}
+}
