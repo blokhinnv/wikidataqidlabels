@@ -4,6 +4,10 @@
 	"description": "VS Code extension to show a description of the entity in Wikidata on hover",
 	"version": "1.0.0",
 	"publisher": "blokhinnv",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/blokhinnv/wikidataqidlabels"
+	},
 	"engines": {
 		"vscode": "^1.50.0"
 	},
