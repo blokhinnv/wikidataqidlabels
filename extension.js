@@ -49,8 +49,9 @@ function setupHoverProvider() {
 			async provideHover(document, position, token) {
 				const range = document.getWordRangeAtPosition(position);
 				const word = document.getText(range);
-				if (isQid(word)) {
-					return getLabel(word).then((obj) => {
+				let unquotedWord = word.replace(/['"]/g, '');
+				if (isQid(unquotedWord)) {
+					return getLabel(unquotedWord).then((obj) => {
 						return new vscode.Hover({
 							value: createHoverText(obj)
 						});
@@ -82,15 +83,37 @@ function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function createLabelLink(type, qid, label) {
+	if (type == 'property') {
+		return `[(prop.) ${capitalizeFirstLetter(label)}](https://www.wikidata.org/wiki/Property:${qid})`;
+	} else {
+		return `[${capitalizeFirstLetter(label)}](https://www.wikidata.org/wiki/${qid})`;
+	}
+}
+
+function createLabelText(type, qid, label) {
+	if (type == 'property') {
+		return `(prop.) ${capitalizeFirstLetter(label)}`;
+	} else {
+		return `${capitalizeFirstLetter(label)}`;
+	}
+}
 
 function createHoverText(obj) {
-	type = obj['type']
-	label = obj['label']
-	description = obj['description']
-	if (type == 'property') {
-		return '[prop.] ' + capitalizeFirstLetter(label) + ' (' + description + ')'
+	add_link = vscode.workspace.getConfiguration('wikidataqidlabels').get('addLinkToEntity', true);
+	qid = obj['qid'];
+	type = obj['type'];
+	label = obj['label'];
+	description = obj['description'];
+
+	if (add_link) {
+		return `${createLabelLink(type, qid, label)}
+
+		${capitalizeFirstLetter(description)}`.replace(/^		/gm, '')
 	} else {
-		return capitalizeFirstLetter(label) + ' (' + description + ')'
+		return `${createLabelText(type, qid, label)}
+
+		${capitalizeFirstLetter(description)}`.replace(/^		/gm, '')
 	}
 
 }
@@ -108,6 +131,7 @@ async function getLabel(qid) {
 			let entity = json['entities'][qid];
 			try {
 				res = {
+					"qid": qid,
 					"type": (qid.charAt(0) == "Q" ? "entity" : "property"),
 					"label": getFieldByLangPriority(entity, 'labels', langs),
 					"description": getFieldByLangPriority(entity, 'descriptions', langs),
