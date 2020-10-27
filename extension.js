@@ -80,7 +80,7 @@ function isQid(word) {
 
 
 function capitalizeFirstLetter(string) {
-	return string.charAt(0).toUpperCase() + string.slice(1);
+	return string === null ? "" : string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function createLabelLink(type, qid, label) {

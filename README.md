@@ -28,4 +28,6 @@ Initial release of the extension
 Added links to entities in hover text
 How the extension works with quotes in JSON files
 
+### 1.2.0
 
+Fixes for entities which don't have a description
