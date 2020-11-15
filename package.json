@@ -2,7 +2,7 @@
 	"name": "wikidataqidlabels",
 	"displayName": "Wikidata QID Labels",
 	"description": "VS Code extension to show a description of the entity in Wikidata on hover",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"icon": "images/wikidata_logo.png",
 	"publisher": "blokhinnv",
 	"repository": {
@@ -45,7 +45,7 @@
 				},
 				"wikidataqidlabels.wikidataLanguages": {
 					"type": "string",
-					"default": "ru|en"
+					"default": "en|ru"
 				},
 				"wikidataqidlabels.addLinkToEntity": {
 					"type": "boolean",
