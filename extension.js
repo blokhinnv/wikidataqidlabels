@@ -12,6 +12,7 @@ const fetch = require("node-fetch");
 
 let disposables = [];
 let cachedQids = {};
+const fullPathRE = new RegExp(/https?:\/\/www\.wikidata\.org\/(?:wiki|entity)\//)
 
 function activate(context) {
 	setupHoverProvider();
@@ -73,7 +74,6 @@ function disposeAll() {
 
 
 function isQid(word) {
-	let fullPathRE = new RegExp(/https?:\/\/www\.wikidata\.org\/(?:wiki|entity)\/[QP]\d+/);
 	let qidRE = new RegExp(/[QP]\d+/);
 	return fullPathRE.test(word) || qidRE.test(word)
 }
@@ -120,7 +120,7 @@ function createHoverText(obj) {
 
 async function getLabel(qid) {
 	langs = vscode.workspace.getConfiguration('wikidataqidlabels').get('wikidataLanguages', "ru|en")
-	qid = qid.replace('https://www.wikidata.org/wiki/', '')
+	qid = qid.replace(fullPathRE, '')
 	if (qid in cachedQids) {
 		return cachedQids[qid]
 	} else {
