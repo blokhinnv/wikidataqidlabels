@@ -140,10 +140,10 @@ async function getLabel(qid) {
 				return res
 			}
 			catch (e) {
-				console.log("Ошибка: " + e)
+				console.log("Error: " + e)
 			}
 		} else {
-			console.log("Ошибка HTTP: " + response.status)
+			console.log("HTTP error: " + response.status)
 		}
 	}
 }
