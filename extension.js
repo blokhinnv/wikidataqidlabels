@@ -73,7 +73,7 @@ function disposeAll() {
 
 
 function isQid(word) {
-	let fullPathRE = new RegExp(/https:\/\/www\.wikidata\.org\/wiki\/[QP]\d+/);
+	let fullPathRE = new RegExp(/https?:\/\/www\.wikidata\.org\/(?:wiki|entity)\/[QP]\d+/);
 	let qidRE = new RegExp(/[QP]\d+/);
 	return fullPathRE.test(word) || qidRE.test(word)
 }
