@@ -35,3 +35,7 @@ Fixes for entities which don't have a description
 ### 1.2.1
 
 Set english language as default
+
+### 1.2.2
+
+QID test updated so it can capture different URI formats (contributed by [@AtilioA](https://github.com/AtilioA))
