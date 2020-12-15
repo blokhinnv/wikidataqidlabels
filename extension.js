@@ -53,9 +53,7 @@ function setupHoverProvider() {
 				let unquotedWord = word.replace(/['"]/g, '');
 				if (isQid(unquotedWord)) {
 					return getLabel(unquotedWord).then((obj) => {
-						return new vscode.Hover({
-							value: createHoverText(obj)
-						});
+						return new vscode.Hover(createHoverText(obj));
 					})
 				}
 			}

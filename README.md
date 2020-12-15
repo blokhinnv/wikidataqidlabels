@@ -39,3 +39,7 @@ Set english language as default
 ### 1.2.2
 
 QID test updated so it can capture different URI formats (contributed by [@AtilioA](https://github.com/AtilioA))
+
+### 1.2.3
+
+Hotfix for VS Code (the hover stopped showing up after the update for 1.52)
